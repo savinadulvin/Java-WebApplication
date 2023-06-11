@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Stock</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        label {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        input[type="number"],
+        input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Stock</h1>
+    <form id="addStockForm" action="transaction" method="post">
+        <input type="hidden" name="option" value="2">
+        <label for="itemId">Item ID:</label>
+        <input type="Number" name="itemId" id="itemId" min="0" required><br>
+        <label for="employeeName">Employee Name:</label>
+        <input type="text" name="employeeName" id="employeeName" pattern="[A-Za-z ]+" required><br>
+        <label for="itemQuantity">Quantity:</label>
+        <input type="Number" name="itemQuantity" id="itemQuantity" min="1" required><br>
+        <input type="submit" value="Add Stock" onclick="submitForm(); return false;">
+    </form>
+
+    <script>
+        function submitForm() {
+            var form = document.getElementById("addStockForm");
+            var formData = new FormData(form);
+
+            // Create a new Web Worker
+            var worker = new Worker("worker.js");
+
+            // Handle messages received from the Web Worker
+            worker.onmessage = function(event) {
+                // Handle the response from the worker
+                console.log(event.data);
+
+                // Cleanup and terminate the Web Worker
+                worker.terminate();
+            };
+
+            // Send message and form data to the Web Worker
+            worker.postMessage(formData);
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+

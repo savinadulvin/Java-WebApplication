@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Financial Report</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+            padding-top: 5px;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Financial Report</h1>
+
+    <!--FINANCIAL_REPORT_CONTENT-->
+    
+    <button onclick="location.href='index.html'">Go back</button>
+    
+    <script>
+        // Function to refresh the page every 5 seconds
+        function refreshPage() {
+            setTimeout(function() {
+                location.reload();
+            }, 5000);
+        }
+
+        // Call the refreshPage function initially
+        refreshPage();
+    </script>
+</body>
+</html>

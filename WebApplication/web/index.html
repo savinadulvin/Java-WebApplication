@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Transaction System</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        li a {
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+        }
+
+        li a:hover {
+            color: #999;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Inventory System</h1>
+    <ul>
+        <li><a href="transaction?option=1">Add new item</a></li>
+        <li><a href="transaction?option=2">Add to stock</a></li>
+        <li><a href="transaction?option=3">Take from stock</a></li>
+        <li><a href="transaction?option=4">Inventory Report</a></li>
+        <li><a href="transaction?option=5">Financial Report</a></li>
+        <li><a href="transaction?option=6">Display Transaction Log</a></li>
+        <li><a href="transaction?option=7">Report Personal Usage</a></li>
+        
+    </ul>
+    <button onclick="location.href='landing.html'">Logout</button>
+</body>
+</html>
+

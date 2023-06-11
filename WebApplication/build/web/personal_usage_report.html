@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personal Usage Report</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+            padding-top: 5px;
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        label {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <form id="personalUsageForm" action="transaction" method="post">
+        <input type="hidden" name="option" value="7">
+        <label for="employeeName">Employee Name:</label>
+        <input type="text" name="employeeName" id="employeeName" pattern="[A-Za-z ]+" required><br>
+        <input type="submit" value="Enter Employee" onclick="submitForm(); return false;">
+    </form>
+    <!--PERSONAL_USAGE_TABLE-->
+
+    <br><br>
+    <button onclick="location.href='index.html'">Go back</button>
+    <script>
+        function submitForm() {
+            var form = document.getElementById("personalUsageForm");
+            var formData = new FormData(form);
+
+            // Create a new Web Worker
+            var worker = new Worker("worker.js");
+
+            // Handle messages received from the Web Worker
+            worker.onmessage = function(event) {
+                // Handle the response from the worker
+                console.log(event.data);
+
+                // Cleanup and terminate the Web Worker
+                worker.terminate();
+
+//                // Process the response data and update the HTML
+//                updateTable(event.data);
+            };
+
+            // Send message and form data to the Web Worker
+            worker.postMessage(formData);
+        }
+
+    </script>
+</body>
+</html>
